@@ -24,6 +24,7 @@ All three are one-tap buttons on the login screen. No typing required.
 
 ## What it does
 
+- **Decodes any rejection, not just the ones we listed.** Paste the wording from your own claim at `/decode` — no login. An OpenAI model maps it to a known reason, or refuses and routes you to a grievance. It never invents a correction route.
 - **Decodes rejections.** EPFO says "DOB not matching with UIDAI records." This shows that EPFO has your birth year as 1994 while Aadhaar says 1993 — and the exact correction route.
 - **Catches mismatches before you file.** The same cross-check runs pre-submission across EPFO, Aadhaar, PAN, and bank records, so you find out in ten seconds instead of three weeks.
 - **Tells you what you'll actually receive.** One number, TDS applied, credit window shown — not a wall of contribution rows.
@@ -31,6 +32,21 @@ All three are one-tap buttons on the login screen. No typing required.
 Every screen answers five questions: what you need · what it costs · how long it takes · your one next step · what usually goes wrong here.
 
 ---
+
+## Optional: the model layer
+
+The app runs with no key. The decoder falls back to keyword matching, the
+grievance drafter falls back to a template, and every screen says which one
+answered. To switch the model path on, copy `.env.example` to `.env.local`:
+
+```
+OPENAI_API_KEY=sk-...
+OPENAI_MODEL=gpt-4o-mini
+```
+
+What is sent to the model: the rejection wording only. No UAN, no Aadhaar, no
+name, no bank details. Reasoning in [docs/11-build-log.md](docs/11-build-log.md)
+and on the site at `/how-it-works`.
 
 ## Run locally
 
@@ -42,7 +58,14 @@ npm install
 npm run dev
 ```
 
-Then open `http://localhost:3000`. No environment variables, no database — all data is mocked.
+Then open `http://localhost:3000`. No database, and environment variables are optional — all data is mocked.
+
+```bash
+npm run contrast
+```
+
+Runs the WCAG audit against the real tokens in `app/globals.css`. 24/24 pairs
+pass in light and dark.
 
 ---
 
