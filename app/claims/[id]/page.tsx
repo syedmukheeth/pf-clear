@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import ActionCard from "@/components/ActionCard";
 import AppHeader from "@/components/AppHeader";
+import GrievanceComposer from "@/components/GrievanceComposer";
+import HindiToggle from "@/components/HindiToggle";
 import MismatchDiff from "@/components/MismatchDiff";
 import StatusPill from "@/components/StatusPill";
 import StatusTimeline from "@/components/StatusTimeline";
@@ -111,7 +113,12 @@ export default function ClaimDetailPage() {
                     />
                   )}
 
-                  <p className="prose-measure text-ink">{data.decoded.why}</p>
+                  <HindiToggle
+                    segments={[data.decoded.why]}
+                    render={([why]) => (
+                      <p className="prose-measure text-ink">{why}</p>
+                    )}
+                  />
 
                   {data.decoded.grievance && (
                     <div className="rounded-md border border-line bg-sunk p-3">
@@ -153,6 +160,14 @@ export default function ClaimDetailPage() {
                     ) : undefined
                   }
                 />
+              </div>
+            )}
+
+            {/* A grievance is the only route left when the rejection cannot be
+                decoded, and the hardest thing about it is the writing. */}
+            {data.claim.status === "REJECTED" && (
+              <div className="mt-4">
+                <GrievanceComposer claimId={data.claim.id} />
               </div>
             )}
 

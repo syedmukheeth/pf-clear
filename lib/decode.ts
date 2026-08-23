@@ -92,3 +92,25 @@ export function decode(claim: Claim, member: Member): Decoded | undefined {
 export function isCodeKnown(code: string): boolean {
   return code in TAXONOMY;
 }
+
+/** The codes the model is allowed to choose from. It cannot invent one. */
+export const TAXONOMY_CODES = Object.keys(TAXONOMY);
+
+/**
+ * Decode a code without a claim attached — used when a member pastes their own
+ * rejection wording and there is no seeded claim behind it. No member record, so
+ * no side-by-side values: the explanation only.
+ */
+export function decodeByCode(code: string, portalRemark: string): Decoded | undefined {
+  const entry = TAXONOMY[code];
+  if (!entry) return undefined;
+
+  return {
+    recognised: true,
+    code,
+    portalRemark,
+    plainTitle: entry.plainTitle,
+    why: entry.why,
+    fixId: entry.fixId,
+  };
+}

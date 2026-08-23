@@ -7,9 +7,18 @@ const NAV = [
   { href: "/claims", label: "My claims" },
   { href: "/validator", label: "Check my records" },
   { href: "/calculator", label: "What I'll get" },
+  { href: "/decode", label: "Decode a rejection" },
+  { href: "/how-it-works", label: "How this works" },
 ];
 
-export default function AppHeader({ memberName }: { memberName?: string }) {
+export default function AppHeader({
+  memberName,
+  /** Public pages (the decoder, the how-it-works page) have no session to end. */
+  publicPage = false,
+}: {
+  memberName?: string;
+  publicPage?: boolean;
+}) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -22,22 +31,32 @@ export default function AppHeader({ memberName }: { memberName?: string }) {
   return (
     <header className="border-b border-line bg-surface">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
-        <Link href="/claims" className="inline-flex min-h-11 items-center text-lg font-bold tracking-tight text-ink">
+        <Link
+          href="/claims"
+          className="inline-flex min-h-11 items-center text-lg font-bold tracking-tight text-ink"
+        >
           PF Clear
         </Link>
         <div className="flex items-center gap-3">
           {memberName && (
-            <span className="hidden text-sm text-ink-muted sm:inline">
-              {memberName}
-            </span>
+            <span className="hidden text-sm text-ink-muted sm:inline">{memberName}</span>
           )}
-          <button
-            type="button"
-            onClick={signOut}
-            className="min-h-11 rounded-md px-2 text-sm font-medium text-accent hover:underline"
-          >
-            Sign out
-          </button>
+          {publicPage ? (
+            <Link
+              href="/"
+              className="inline-flex min-h-11 items-center rounded-md px-2 text-sm font-medium text-accent hover:underline"
+            >
+              Sign in
+            </Link>
+          ) : (
+            <button
+              type="button"
+              onClick={signOut}
+              className="min-h-11 rounded-md px-2 text-sm font-medium text-accent hover:underline"
+            >
+              Sign out
+            </button>
+          )}
         </div>
       </div>
 

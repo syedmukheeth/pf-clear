@@ -251,6 +251,93 @@ commitment from EPFO.
 
 ---
 
+## Day 6b — reading the published brief, and what it cost
+
+**Problem 16 — we had been building against notes from a video, not the brief.**
+[00-brief.md](00-brief.md) was written from the organiser video. The published
+brief at buildwhatmovesindia.com/brief says three materially different things:
+the platform list is examples rather than fixed; the summary is *under* 250 words
+rather than exactly 250; and, most importantly, **"your prototype should be built
+with Codex or powered by an OpenAI model"** — a requirement absent from our notes
+entirely.
+
+It also names six judging criteria. Four we were already strong on. Two we were
+not building for at all:
+
+- **End-to-end thinking** — "does the solution address the backend,
+  infrastructure and processes, not just the interface". We had explicitly cut
+  all of that as scope discipline. Correct instinct, wrong target.
+- **Honesty** — "are limitations, mock data and dependencies clearly disclosed".
+  We had a footer. The brief treats it as something a strong build makes
+  *obvious*.
+
+**Fix.** [00-brief.md](00-brief.md) rewritten from the published text with a
+table of the five corrections at the bottom, so the record shows what was wrong
+rather than hiding it. Then three pieces of work, below.
+
+---
+
+**The model does the work a lookup table cannot.**
+
+The decoder held five hard-coded codes. Nationally there are hundreds of remark
+variants written by people across field offices, sometimes in Hinglish, often
+without a code at all. That long tail is the actual problem, and it is the part a
+static taxonomy will never cover.
+
+`/decode` takes any pasted rejection wording — no login, no demo account — and
+normalises it into one of the reasons we know how to fix. The safety properties
+are the design, not an afterthought:
+
+- The correction route is an **enum the model chooses from**. It cannot invent a
+  route, so it cannot send a member to the wrong office.
+- Below a **confidence floor of 0.6** the member is told we do not know, and
+  routed to a grievance. Refusing is a designed outcome.
+- Pasted text is **wrapped as data** before it reaches the model, so a remark
+  engineered to read as an instruction is treated as content.
+- **Every screen says who wrote what you are reading** — the `Provenance`
+  component names the model, or names the rule that answered instead.
+- **No key, no network, model outage: the app still works.** It falls back to
+  keyword matching and says so. Verified by running the whole build with no key
+  set, which is how it ships until one is added.
+
+Two more model features, both of which were already on the Round 2 list because
+they are real needs rather than demonstrations:
+
+- **The grievance composer.** The gap is not knowledge, it is writing. Members
+  know they have been wronged; what gets a grievance answered is quoting the
+  rejection text and asking one specific question, in English, about a system
+  nobody explained to them. Drafted from the claim's own facts, with an explicit
+  instruction not to state a cause as fact when the code could not be decoded.
+- **"यह हिंदी में पढ़ें"** on the explanation of why the money stopped — the part
+  that has to land. Form names stay in English because that is what a member has
+  to type into the portal. If the translation comes back with a different number
+  of segments than it was given, English is shown rather than pairing the wrong
+  Hindi with the wrong heading.
+
+**Why it matters to a citizen.** The demo accounts are three people. The pasted-
+remark decoder is for everyone else — including the rejections we have never
+seen, which is most of them.
+
+---
+
+**`/how-it-works` — the two criteria we were losing.**
+
+One page: a real/mocked/would-need table for every part of the system, then the
+status read API this needs from EPFO, how the taxonomy stays maintained (model
+first, rules after — every refusal is a wording a human should add), the safety
+properties of the model layer, privacy (the decoder is sent the rejection wording
+only — no UAN, no Aadhaar, no name), cost at scale (cache by normalised remark:
+each new wording is paid for once nationally, not once per member), and the one
+process change worth more than the entire interface: **run the record cross-check
+at submission rather than at decision**. The comparison already happens. Moving
+it three weeks earlier turns a rejection into a correction.
+
+**Why it matters.** "Honesty" and "end-to-end thinking" are two of six scored
+criteria. Before this page they were answered in a repo nobody reviewing will
+open.
+
+---
+
 ## Decisions that differ from the original docs
 
 Written down because a mentor or judge may ask why the build and the docs do not
