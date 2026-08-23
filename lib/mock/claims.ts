@@ -48,6 +48,23 @@ export const CLAIMS: Claim[] = [
     amountCredited: 85000,
     settledOn: daysAgo(289),
   },
+  // An earlier attempt rejected with a code the decoder does not recognise.
+  // This exists so the honest fallback is reachable in the demo, not just in
+  // the code: an unknown code is reported as unknown.
+  {
+    id: "clm_b3",
+    uan: "100100100002",
+    type: "FORM_31",
+    typeLabel: "Partial advance for illness (Form 31)",
+    filedOn: daysAgo(420),
+    status: "REJECTED",
+    amountClaimed: 60000,
+    rejection: {
+      code: "R-441",
+      portalRemark:
+        "Claim rejected: Member not eligible as per para 68J. Ref: R-441",
+    },
+  },
 
   // Arun — rejected, the hero demo
   {
@@ -278,6 +295,52 @@ export const CLAIM_EVENTS: ClaimEvent[] = [
     normalDurationDays: [3, 7],
     actualDurationDays: 0,
     nothingToDo: "Credited to ICICI account ending 3055.",
+  },
+
+  // clm_b3 — Ramesh, rejected on a code the decoder does not know
+  {
+    claimId: "clm_b3",
+    stage: "SUBMITTED",
+    stageLabel: "Claim submitted",
+    enteredOn: daysAgo(420),
+    status: "DONE",
+    normalDurationDays: [0, 1],
+    actualDurationDays: 0,
+  },
+  {
+    claimId: "clm_b3",
+    stage: "EMPLOYER_APPROVAL",
+    stageLabel: "Employer approval",
+    enteredOn: daysAgo(420),
+    status: "DONE",
+    heldBy: "Meridian Tech Solutions Pvt Ltd",
+    normalDurationDays: [3, 7],
+    actualDurationDays: 5,
+  },
+  {
+    claimId: "clm_b3",
+    stage: "EPFO_REVIEW",
+    stageLabel: "EPFO field officer review",
+    enteredOn: daysAgo(415),
+    status: "REJECTED",
+    heldBy: "EPFO Pune (Akurdi)",
+    waitingOn: "Rejected on eligibility grounds, with a code we cannot decode",
+    normalDurationDays: [5, 10],
+    actualDurationDays: 8,
+  },
+  {
+    claimId: "clm_b3",
+    stage: "APPROVED",
+    stageLabel: "Approved and sent to bank",
+    status: "NOT_STARTED",
+    normalDurationDays: [2, 5],
+  },
+  {
+    claimId: "clm_b3",
+    stage: "CREDITED",
+    stageLabel: "Credited to your bank",
+    status: "NOT_STARTED",
+    normalDurationDays: [3, 7],
   },
 
   // clm_c1 — Arun, rejected at EPFO review

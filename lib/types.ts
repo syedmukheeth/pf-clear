@@ -107,5 +107,5 @@ export interface Decoded {
   mismatch?: { label: string; left: { source: string; value: string }; right: { source: string; value: string }; note: string };
   fixId?: string;
   /** Used only when the code is not in the taxonomy. */
-  grievance?: { title: string; body: string; href: string };
+  grievance?: { title: string; body: string };
 }

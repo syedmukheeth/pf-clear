@@ -42,14 +42,14 @@ Format: dated entries, newest first. Every mentor comment gets logged with a dec
 
 ### Known gaps at R1
 <!-- Be honest here. This list is the R2 work queue. -->
-- Rejection taxonomy covers 5 codes (`R-217`, `R-104`, `R-133`, `R-152`, `R-181`). Anything else routes to grievance by design, but the coverage is thin.
+- Rejection taxonomy covers 5 codes (`R-217`, `R-104`, `R-133`, `R-152`, `R-181`). Anything else routes to grievance by design — reachable in the demo on Ramesh's third claim — but the coverage is thin.
 - The validator shows what is wrong and cannot record that a fix was filed — there is no "I have raised this" state.
 - The employer nudge uses the clipboard API, which needs a secure origin. It silently does nothing on plain HTTP.
-- Dark mode ships from the token swap but has not been contrast-audited pair by pair, particularly the four `*-soft` backgrounds.
+- The "no claims yet" empty state is built but unreachable: all three demo members have claims. It cannot be demonstrated without a fourth account.
 - No Hindi anywhere. English with the EPFO term in parentheses only.
-- No styled 404; an unknown route gets the framework default.
-- Timeline stage durations are seeded, not sourced — they read as fact and should be labelled as typical ranges from published data.
 - Amounts are illustrative. A judge who knows EPS well may query the interest accrual, which is a flat seeded figure rather than a computed one.
+- Stage durations are seeded rather than sourced from published EPFO service standards. The screen now says they are indicative, but the numbers are still ours.
+- No sticky bottom action bar on long screens, which [05-design-system.md](05-design-system.md) asks for. Every long screen already ends on its single primary action, so this was left out rather than duplicating the button.
 
 ### Cut deliberately
 Admin side · real EPFO integration · authentication theatre · registration flow · decorative motion. Reasoning in [03-features.md](03-features.md).

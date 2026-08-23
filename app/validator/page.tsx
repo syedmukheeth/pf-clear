@@ -205,7 +205,7 @@ export default function ValidatorPage() {
               </p>
               <Link
                 href="/calculator"
-                className="mt-3 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-white hover:bg-accent-hover"
+                className="mt-3 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-accent-ink hover:bg-accent-hover"
               >
                 See what I will actually get
               </Link>

@@ -50,8 +50,12 @@ export default function ClaimsPage() {
     };
   }, []);
 
-  const needsYou = data?.claims.filter(
+  const claims = data?.claims ?? [];
+  const needsYou = claims.filter(
     (claim) => claim.status === "REJECTED" || claim.status === "STALLED",
+  );
+  const inFlight = claims.filter(
+    (claim) => claim.status === "IN_PROGRESS" || claim.status === "APPROVED",
   );
 
   return (
@@ -79,12 +83,19 @@ export default function ClaimsPage() {
 
         {data && (
           <>
-            {needsYou && needsYou.length > 0 && (
+            {data.claims.length > 0 && (
               <p className="mt-2 prose-measure text-ink-muted">
-                {needsYou.length === 1
-                  ? "One claim needs something from you."
-                  : `${needsYou.length} claims need something from you.`}{" "}
-                The rest are moving on their own.
+                {needsYou.length === 0
+                  ? "Nothing here needs you. Every claim is moving or already settled."
+                  : `${
+                      needsYou.length === 1
+                        ? "One claim needs"
+                        : `${needsYou.length} claims need`
+                    } something from you.${
+                      inFlight.length > 0
+                        ? " The rest are moving on their own."
+                        : " The rest are settled."
+                    }`}
               </p>
             )}
 
@@ -103,7 +114,7 @@ export default function ClaimsPage() {
                 </div>
                 <Link
                   href="/validator"
-                  className="mt-4 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-white hover:bg-accent-hover"
+                  className="mt-4 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-accent-ink hover:bg-accent-hover"
                 >
                   Check your records before you file
                 </Link>
@@ -170,7 +181,7 @@ export default function ClaimsPage() {
               </p>
               <Link
                 href="/validator"
-                className="mt-3 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-white hover:bg-accent-hover"
+                className="mt-3 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-accent-ink hover:bg-accent-hover"
               >
                 Check my records
               </Link>

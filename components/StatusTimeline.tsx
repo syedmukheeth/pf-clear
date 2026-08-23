@@ -56,7 +56,7 @@ function CopyNudge({
       <button
         type="button"
         onClick={copy}
-        className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-hover"
+        className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-accent-ink hover:bg-accent-hover"
       >
         {copied ? "Copied — paste it to your HR contact" : "Copy the exact request"}
       </button>
@@ -183,7 +183,7 @@ export default function StatusTimeline({
               {event.youCanDo?.action === "OPEN_VALIDATOR" && (
                 <Link
                   href="/validator"
-                  className="mt-2 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-white hover:bg-accent-hover"
+                  className="mt-2 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-accent-ink hover:bg-accent-hover"
                 >
                   {event.youCanDo.label}
                 </Link>

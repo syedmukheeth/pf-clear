@@ -15,12 +15,12 @@ Mobile-first, calm, informational. The visual job is to make an anxious person f
   --surface:       #FFFFFF;
   --surface-sunk:  #F4F4F1;
   --border:        #E4E4DF;
-  --border-strong: #C9C9C2;
+  --border-strong: #8C8C87;
 
   /* text */
   --text:          #1A1A17;
   --text-muted:    #5C5C55;
-  --text-faint:    #8A8A81;
+  --text-faint:    #707068;
 
   /* brand — a deep government-adjacent indigo, not saffron/green (avoids flag cosplay) */
   --accent:        #1F3A8A;
@@ -29,8 +29,8 @@ Mobile-first, calm, informational. The visual job is to make an anxious person f
 
   /* status semantics — the most important tokens in the file */
   --ok:            #1B7A4A;  --ok-soft:      #E7F4ED;
-  --wait:          #8A6D1F;  --wait-soft:    #FBF3DE;
-  --stalled:       #B45309;  --stalled-soft: #FDF0E3;
+  --wait:          #886B1E;  --wait-soft:    #FBF3DE;
+  --stalled:       #B35209;  --stalled-soft: #FDF0E3;
   --rejected:      #B02A2A;  --rejected-soft:#FBEAEA;
 
   /* type */
@@ -69,8 +69,8 @@ Only if it comes free from the token swap. Not a priority — it is not what the
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #14140F; --surface: #1C1C17; --surface-sunk: #24241E;
-    --border: #33332B; --border-strong: #4A4A40;
-    --text: #F2F2EC; --text-muted: #A8A89E; --text-faint: #7A7A70;
+    --border: #33332B; --border-strong: #6E6E64;
+    --text: #F2F2EC; --text-muted: #A8A89E; --text-faint: #8B8B81;
     --accent: #8CA8F0; --accent-soft: #1E2748;
     --ok-soft: #12291D; --wait-soft: #2B2410;
     --stalled-soft: #2E1F0E; --rejected-soft: #2E1414;

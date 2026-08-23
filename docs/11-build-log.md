@@ -191,6 +191,66 @@ Worth knowing before it happens at 7 PM on submission day.
 
 ---
 
+## Day 6 — states, accessibility, polish
+
+**Built.** Contrast audit as a runnable script, styled 404, share metadata, the
+unrecognised-rejection state made reachable, claim ordering, and copy fixes across
+the claim list.
+
+**Problem 13 — six colour pairs failed WCAG, including one on every primary button.**
+The design doc flagged the `*-soft` backgrounds as where these palettes usually
+fail, so they were measured rather than eyeballed. In light mode `--text-faint`
+missed 4.5:1 on all three surfaces (3.16–3.48), `--wait` and `--stalled` sat just
+under on their soft backgrounds (4.43, 4.48), and `--border-strong` was 1.66:1
+against white. In dark mode `--text-faint` failed, and **white text on the dark
+accent measured 2.34:1** — every primary button in the build.
+
+**Fix.** Tokens corrected to the nearest passing values
+(`--text-faint` `#707068` light / `#8B8B81` dark, `--wait` `#886B1E`,
+`--stalled` `#B35209`, `--border-strong` `#8C8C87` / `#6E6E64`), and a new
+`--accent-ink` token carries the text colour that sits on the accent: white in
+light mode, near-black in dark, where it now measures 7.9:1. The audit itself
+lives at [`scripts/contrast-audit.mjs`](../scripts/contrast-audit.mjs) and reads
+`app/globals.css` directly, so it cannot drift from the tokens it checks.
+`npm run contrast` — 24/24 pairs pass in both modes.
+
+**Why it matters to a citizen.** This audience skews older and reads on phones in
+daylight. A 2.34:1 button label is not a technicality.
+
+---
+
+**Problem 14 — the honest fallback could not be demonstrated.**
+"The decoder refuses to guess at codes it does not know" is one of the strongest
+things to say about this build, and no demo account could reach it. It existed
+only in the source.
+
+**Fix.** Ramesh has a third claim, rejected 14 months ago with `R-441`, a code
+deliberately left out of the taxonomy. The screen says the code is not recognised,
+declines to explain it, and hands over an Action Card for filing a grievance that
+quotes it. The "check your records" shortcut is suppressed there — we do not know
+that records are the problem.
+
+---
+
+**Problem 15 — a settled claim outranked a stuck one.**
+The claim list rendered in seed order, so Ramesh's 14-month-old settled advance
+could sit above the claim that has been stuck for 21 days. The summary line also
+said "the rest are moving on their own" when the rest were finished.
+
+**Fix.** The API sorts needs-you first, then in-flight, then settled, each by date.
+The summary line counts what is actually in flight, and Priya — who has nothing
+outstanding — now gets "Nothing here needs you" instead of no line at all.
+
+---
+
+**Also.** Styled 404 rather than the framework default. Open Graph tags so the
+submission link does not unfurl as a bare URL. `robots: noindex` — a fictional
+site that looks like a government portal should not be in search results. A note
+under every timeline stating that stage durations are indicative ranges, not a
+commitment from EPFO.
+
+---
+
 ## Decisions that differ from the original docs
 
 Written down because a mentor or judge may ask why the build and the docs do not
@@ -201,6 +261,7 @@ match exactly.
 | Server components fetch data directly ([06](06-architecture.md)) | The four data screens are client components fetching `/api/*` | Server components cannot reliably fetch their own route handlers, and the 300–600ms delay only pays for itself if a real loading state renders. The shell and layout stay server-rendered. |
 | Arun: 1 blocker, 2 warnings ([04](04-mock-data.md)) | 1 blocker, 3 warnings | The validator derives its checks from the member record rather than a fixed list, so "service under 5 years" and "Form 15G not filed" are counted separately. Both are true and both cost money. |
 | Priya: clear, 1 warning ([04](04-mock-data.md)) | Clear, 2 warnings | Same reason. Still 0 blockers, which is the point of her account. |
-| Dark mode only "if it comes free" ([05](05-design-system.md)) | Shipped | It did come free from the token swap. Not contrast-audited pair by pair — see the gaps list in [changelog.md](changelog.md). |
+| Dark mode only "if it comes free" ([05](05-design-system.md)) | Shipped, and contrast-audited | It came free from the token swap, then cost six token corrections to pass WCAG in both modes. `npm run contrast` proves it. |
+| Sticky bottom bar for the primary action on long screens ([05](05-design-system.md)) | Not built | Every long screen already ends on its single primary action. A sticky duplicate would put two identical buttons on the same screen, which the same doc forbids. |
 
 Next: [07-demo-script.md](07-demo-script.md) · [08-submission.md](08-submission.md)

@@ -72,7 +72,7 @@ export default function ActionCard({
               {cta ?? (
                 <Link
                   href={fix.nextStepHref!}
-                  className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-white hover:bg-accent-hover"
+                  className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-accent-ink hover:bg-accent-hover"
                 >
                   {fix.title}
                 </Link>

@@ -73,7 +73,6 @@ export function decode(claim: Claim, member: Member): Decoded | undefined {
       grievance: {
         title: "Ask EPFO what it means, in writing",
         body: "File a grievance quoting this exact code and claim reference. Grievances that quote the code and ask one specific question get answered; general complaints get a template reply.",
-        href: "/validator",
       },
       fixId: "fix_grievance",
     };

@@ -140,13 +140,17 @@ export default function ClaimDetailPage() {
               <div className="mt-4">
                 <ActionCard
                   fix={data.fix}
+                  // No "check your records" shortcut when we could not decode the
+                  // rejection — we do not know that the records are the problem.
                   cta={
-                    <Link
-                      href="/validator"
-                      className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-white hover:bg-accent-hover"
-                    >
-                      Check every record before you refile
-                    </Link>
+                    data.decoded?.recognised ? (
+                      <Link
+                        href="/validator"
+                        className="inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-accent-ink hover:bg-accent-hover"
+                      >
+                        Check every record before you refile
+                      </Link>
+                    ) : undefined
                   }
                 />
               </div>
@@ -162,6 +166,11 @@ export default function ClaimDetailPage() {
                 events={data.events}
                 memberName={data.member.name}
               />
+              <p className="prose-measure text-sm text-ink-faint">
+                Typical stage durations are indicative ranges, not a commitment from
+                EPFO. They are here so you can tell the difference between waiting and
+                being stuck.
+              </p>
             </section>
           </>
         )}

@@ -142,7 +142,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={pending !== undefined}
-            className="min-h-11 w-full rounded-md bg-accent px-4 py-2.5 font-medium text-white hover:bg-accent-hover disabled:opacity-60"
+            className="min-h-11 w-full rounded-md bg-accent px-4 py-2.5 font-medium text-accent-ink hover:bg-accent-hover disabled:opacity-60"
           >
             Sign in
           </button>

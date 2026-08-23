@@ -1,10 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const DESCRIPTION =
+  "A citizen-side rebuild of the EPFO member portal: plain-language claim status, decoded rejections, and what you will actually receive.";
+
 export const metadata: Metadata = {
   title: "PF Clear — know why your PF claim is stuck",
-  description:
-    "A citizen-side rebuild of the EPFO member portal: plain-language claim status, decoded rejections, and what you will actually receive.",
+  description: DESCRIPTION,
+  // The submission is a shared link. It should not unfurl as a bare URL.
+  openGraph: {
+    title: "PF Clear — know why your PF claim is stuck",
+    description: DESCRIPTION,
+    type: "website",
+    siteName: "PF Clear",
+  },
+  twitter: { card: "summary", title: "PF Clear", description: DESCRIPTION },
+  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

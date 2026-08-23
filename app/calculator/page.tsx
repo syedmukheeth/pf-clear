@@ -84,7 +84,7 @@ export default function CalculatorPage() {
               onClick={() => setMode(option)}
               className={`min-h-11 rounded-sm px-4 text-sm font-medium ${
                 mode === option
-                  ? "bg-accent text-white"
+                  ? "bg-accent text-accent-ink"
                   : "text-ink-muted hover:text-ink"
               }`}
             >
@@ -248,7 +248,7 @@ export default function CalculatorPage() {
             </p>
             <Link
               href="/validator"
-              className="mt-3 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-white hover:bg-accent-hover"
+              className="mt-3 inline-flex min-h-11 items-center rounded-md bg-accent px-4 py-2.5 font-medium text-accent-ink hover:bg-accent-hover"
             >
               Check my records
             </Link>

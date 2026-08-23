@@ -30,5 +30,15 @@ export async function GET() {
     };
   });
 
+  // What needs the member first, then most recent. A settled claim from last
+  // year should never sit above one that is stuck today.
+  const rank = (status: string) =>
+    status === "REJECTED" || status === "STALLED" ? 0 : status === "IN_PROGRESS" ? 1 : 2;
+
+  claims.sort(
+    (a, b) =>
+      rank(a.status) - rank(b.status) || b.filedOn.localeCompare(a.filedOn),
+  );
+
   return NextResponse.json({ member: publicMember(member), claims });
 }
