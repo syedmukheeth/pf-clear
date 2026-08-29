@@ -12,8 +12,8 @@ Corrections are listed at the bottom.
 
 | Date | What happens |
 |---|---|
-| **28 Aug 2026, 8:00 PM IST** | Submission closes. Stated plainly: **no grace period after the form closes.** |
-| 28 Aug – 1 Sep | Every submission reviewed by the organiser team together with OpenAI |
+| **29 Aug 2026, 10:00 PM IST** | Submission closes. Stated plainly: **no grace period after the form closes.** |
+| 29 Aug – 1 Sep | Every submission reviewed by the organiser team together with OpenAI |
 | ~1 Sep | Top **250** shortlisted. Everyone who submitted gets an email, pass or fail. |
 | 1 – 7 Sep | Mentorship week — WhatsApp group with five mentors from engineering, tech and the OpenAI team |
 | **7 Sep 2026** | Resubmit the improved build, same format, **same email addresses** |

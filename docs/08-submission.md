@@ -1,6 +1,6 @@
 # 08 — Submission
 
-Everything the form asks for, ready to paste. Finalise on **27 Aug**, not on the 28th.
+Everything the form asks for, ready to paste. Form closes **29 Aug 2026, 10:00 PM IST** — no grace period.
 
 ---
 
@@ -9,29 +9,29 @@ Everything the form asks for, ready to paste. Finalise on **27 Aug**, not on the
 | Field | Value |
 |---|---|
 | Submitted from | `lokeshkammara@gmail.com` — **the registered email. No other.** |
-| Live link | `https://__________.vercel.app` <!-- fill after deploy --> |
+| Live link | `https://pf-clear-omega.vercel.app` — public, no login wall, verified 29 Aug |
 | Video link | `https://__________` <!-- fill after upload; test in incognito --> |
 | Demo credentials | UAN `100100100003` / `demo1234` (also `...001` and `...002`, same password) |
-| Partner email | *blank — solo entry* |
-| Summary | below, exactly 250 words |
+| Partner email | *blank — solo entry.* If a partner is added, both must already be registered and each must enter the other's email. |
+| Summary | below — 238 words, under the 250 cap |
 
 Put the credentials in the summary or wherever else the form allows, and on the login screen itself. A judge who can't get in scores nothing.
 
 ---
 
-## The 250-word summary
+## The summary — 238 words
 
-> Draft below. **Rewrite on 27 Aug once the build is real** — specifics from the finished app beat anything written in advance. Lead with the citizen's problem, not the feature list. Verify the count with `wc -w`, not by eye.
+> Verified at 238 words on 29 Aug with `wc -w`, under the 250-word cap. Leads with the citizen's problem, not the feature list.
 
 ---
 
-Ask anyone in India who has claimed their PF and you'll hear the same sentence: "It says Under Process." That is the entire message EPFO gives you about your own money. Not who is holding your claim. Not why it stopped. Not what to do next.
+Ask anyone in India who has claimed their PF: "It says Under Process." That is the entire message EPFO gives about your own money. Not who is holding your claim. Not why it stopped. Not what to do next.
 
 PF Clear rebuilds the EPFO member portal around the three questions members actually have.
 
 First, it decodes rejections. EPFO writes "DOB not matching with UIDAI records." We show that EPFO has your birth year as 1994 while Aadhaar says 1993, explain why that stops a payment, and give you the correction route — which form, how long, what it costs.
 
-Second, it catches those mismatches before you file. The same check that explains a rejection runs beforehand, comparing your EPFO, Aadhaar, PAN and bank records and telling you what would be rejected. Members currently discover this only by failing, three weeks later, after the money never arrives.
+Second, it catches those mismatches before you file. The same check that explains a rejection runs beforehand, comparing your EPFO, Aadhaar, PAN and bank records and telling you what would be rejected. Members currently discover this only by failing, three weeks later.
 
 Third, it answers "how much will I get." Not contribution rows — one number, with TDS applied and the credit window shown.
 
@@ -43,7 +43,7 @@ We changed no forms and no rules. Form 19 is still Form 19, employer attestation
 
 ## Pre-submit checklist
 
-Run this in order, on 27 Aug.
+Run this in order, before 10:00 PM IST on 29 Aug.
 
 **The link**
 - [ ] Opens in an **incognito window**, on a **different device**, on **mobile data**
@@ -66,7 +66,7 @@ Run this in order, on 27 Aug.
 **The form**
 - [ ] Submitting from `lokeshkammara@gmail.com`
 - [ ] Partner field blank (solo)
-- [ ] Submitted **27 Aug**, not 28 Aug 7:58 PM
+- [ ] Submitted well before **29 Aug, 10:00 PM IST**, not at 9:58 PM
 
 ---
 
