@@ -9,7 +9,7 @@ Everything the form asks for, ready to paste. Form closes **29 Aug 2026, 10:00 P
 | Field | Value |
 |---|---|
 | Submitted from | `lokeshkammara@gmail.com` — **the registered email. No other.** |
-| Live link | `https://pf-clear-omega.vercel.app` — public, no login wall, verified 29 Aug |
+| Live link | `https://pf-clear-knu1.vercel.app` — public, no login wall |
 | Video link | `https://__________` <!-- fill after upload; test in incognito --> |
 | Demo credentials | UAN `100100100003` / `demo1234` (also `...001` and `...002`, same password) |
 | Partner email | *blank — solo entry.* If a partner is added, both must already be registered and each must enter the other's email. |

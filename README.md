@@ -8,7 +8,7 @@ Built for [Build What Moves India](https://buildwhatmovesindia.com/) — a citiz
 
 ## Demo login
 
-**Live:** https://pf-clear-omega.vercel.app
+**Live:** https://pf-clear-knu1.vercel.app
 
 | Account | UAN | Password | Shows |
 |---|---|---|---|
