@@ -165,6 +165,7 @@ export async function decodeRemark(remark: string): Promise<RemarkDecode> {
     };
   } catch (error) {
     // A model outage must not take the feature down. Fall back and say so.
+    console.error("[decode] model unavailable:", error instanceof Error ? error.message : error);
     const provenance: Provenance = {
       source: "rules",
       reason:
